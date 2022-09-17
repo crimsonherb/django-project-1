@@ -1,0 +1,26 @@
+{%  extends "recipe_crud/recipe_crud_base.html" %}
+
+{% block body_block %}
+<div class="container">
+    <h1>Welcome to recipe detail page</h1>
+    <h2>Details:</h2>
+    <p>Recipe Name: {{recipes_detail.recipe_name}}</p>
+    <p>Author: {{recipes_detail.author}}</p>
+    <p>Ingredients: {{recipes_detail.ingredients|safe|linebreaksbr}}</p>
+    <p>Directions: {{recipes_detail.direction|safe|linebreaksbr}}</p>
+    {% if recipes_detail.thumbnail %}
+    <p><img src="{{ recipes_detail.thumbnail.url}}"></p>
+    {% endif %}
+</div>
+
+<div class="container">
+    <p><a class='btn btn-warning' href="{% url 'recipe_crud:update' pk=recipes_detail.pk %}">
+        Update
+    </a>
+    <a class='btn btn-warning' href="{% url 'recipe_crud:delete' pk=recipes_detail.pk %}">
+        Delete
+    </a></p>
+    
+</div>
+
+{% endblock %}

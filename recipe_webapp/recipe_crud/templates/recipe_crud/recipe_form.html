@@ -1,0 +1,27 @@
+{%  extends "recipe_crud/recipe_crud_base.html" %}
+
+{% load bootstrap5 %}
+
+{% block body_block %}
+
+<div class="container">
+    <h1>
+        {% if not form.instance.pk %}
+        Create Recipe
+        {% else %}
+        Update Recipe
+        {% endif %}
+    </h1>
+    
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        {% buttons %}
+          <button type="submit" class="btn btn-primary">Submit</button>
+        {% endbuttons %}
+
+    </form>
+
+</div>
+
+{% endblock %}
